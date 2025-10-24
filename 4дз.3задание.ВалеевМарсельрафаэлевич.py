@@ -5,11 +5,14 @@ text = input()
 words_dictionary = {}
 lower_text = ''
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+bukvi = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 
 for letter in text:
-    for i in range(26, len(letters)):
-        if letter == letters[i]:
+    for i in range(26, len(bukvi)):
+        if i < 52 and letter == letters[i]:
             letter = letters[i-26]
+        if letter == bukvi[i] and i > 32:
+            letter = bukvi[i-33]
     lower_text += letter
 
 words = re.findall(r'[a-zа-я]+', lower_text)
